@@ -1,4 +1,4 @@
-# Copyright 2020 Cargill Incorporated
+# Copyright 2021-2022 Cargill Incorporated
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#jekyll stuff
-.jekyll-cache/
-_userconfig.yml
-_site/
+build: docker-build
+
+docker-build:
+    docker build \
+        -t bitwiseio/augrim-docs \
+        -f ci/website.dockerfile \
+        .
+
+docker-lint:
+    docker-compose \
+        -f docker/compose/run-lint.yaml \
+        up \
+        --abort-on-container-exit \
+        --build \
+        lint-augrim-docs
+
+docker-run:
+    docker-compose up --build; docker-compose down
+
+lint: docker-lint
+
+run: docker-run

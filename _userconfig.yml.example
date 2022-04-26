@@ -1,4 +1,4 @@
-# Copyright 2020 Cargill Incorporated
+# Copyright 2021-2022 Cargill Incorporated
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#jekyll stuff
-.jekyll-cache/
-_userconfig.yml
-_site/
+
+# To include Google Analytics or enable the search page, replace the example
+# values below with your tokens and rename this file to _userconfig.yml
+
+google_analytics: "%GA_TOKEN%"
+google_search_id: "%GPSE_ID%"

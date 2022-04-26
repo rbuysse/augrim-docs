@@ -1,4 +1,4 @@
-# Copyright 2020 Cargill Incorporated
+# Copyright 2021-2022 Cargill Incorporated
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#jekyll stuff
-.jekyll-cache/
-_userconfig.yml
-_site/
+FROM markdownlint/markdownlint:0.11.0
+
+USER root
+
+RUN echo 'rules "MD013"' > ~/.mdlrc
+RUN echo 'rule "MD013", :code_blocks => false' > ~/mdlstyle.rb
+RUN echo 'rule "MD013", :tables => false' >> ~/mdlstyle.rb
+
+WORKDIR /project
+
+ENTRYPOINT []
